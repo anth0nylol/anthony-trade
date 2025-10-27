@@ -1,1 +1,83 @@
-test
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anthony.trade — Real Trading. Real Results.</title>
+  <meta name="description" content="Futures trader specializing in Nasdaq and S&P strategies. Real trades. Real results." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0b0d12; --text:#e6e9ef; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#88f0ff; }
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05)}
+    header h1{margin:0;font-size:20px;letter-spacing:.5px}
+    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500}
+    nav a:hover{color:var(--accent)}
+
+    .hero{text-align:center;padding:120px 20px 100px;max-width:900px;margin:auto;position:relative}
+    .hero h2{font-size:clamp(36px,6vw,72px);margin:0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:grad 8s linear infinite;background-size:200% 100%;}
+    @keyframes grad{0%{background-position:0 0}100%{background-position:200% 0}}
+    .hero p{color:var(--muted);font-size:18px;margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto}
+
+    .section{max-width:1000px;margin:0 auto;padding:80px 20px;border-bottom:1px solid rgba(255,255,255,.05)}
+    .section h3{font-size:28px;color:var(--accent);margin-bottom:20px;text-align:center}
+    .section p{color:var(--muted);font-size:17px;line-height:1.6;text-align:center}
+
+    .about,.payouts,.mentorship{text-align:center}
+    .payouts img{max-width:90%;border-radius:12px;margin-top:20px}
+
+    .cta{text-align:center;padding:80px 20px}
+    .cta h3{font-size:28px;margin-bottom:20px;color:var(--accent)}
+    .cta a{display:inline-block;padding:14px 26px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;transition:transform .3s}
+    .cta a:hover{transform:scale(1.05)}
+
+    footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Anthony.trade</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#payouts">Payouts</a>
+      <a href="#mentorship">Mentorship</a>
+      <a href="https://anthonyslab.shop">Indicators</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Real Trading. Real Results.</h2>
+    <p>Consistent futures performance built on logic, volatility awareness, and precision execution — not patterns or noise.</p>
+  </section>
+
+  <section id="about" class="section about">
+    <h3>About Me</h3>
+    <p>I'm Anthony — a futures trader specializing in Nasdaq (NQ) and S&P (ES) indices. My approach blends market structure, orderflow, and volatility to form precise trade execution frameworks. Every model I trade and teach is built from real data and performance, not theory.</p>
+  </section>
+
+  <section id="payouts" class="section payouts">
+    <h3>Verified Performance</h3>
+    <p>Results from prop firm funded accounts. Consistency matters more than hype.</p>
+    <img src="payouts.png" alt="Performance chart" />
+  </section>
+
+  <section id="mentorship" class="section mentorship">
+    <h3>Mentorship</h3>
+    <p>My mentorship isn’t about entry patterns — it’s about understanding why price moves, how liquidity shifts, and when volatility drives opportunity. If you’re ready to evolve your trading mindset, join below.</p>
+  </section>
+
+  <div class="cta">
+    <h3>Book a Free Mentorship Call</h3>
+    <a href="https://calendly.com/contact-anthony/trading-mentorship">Schedule via Calendly</a>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Anthony.trade — All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
