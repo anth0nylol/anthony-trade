@@ -27,19 +27,47 @@
     .hero{text-align:center;padding:120px 20px 100px;max-width:900px;margin:auto;position:relative}
     .hero h2{font-size:clamp(36px,6vw,72px);margin:0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:grad 8s linear infinite;background-size:200% 100%;}
     @keyframes grad{0%{background-position:0 0}100%{background-position:200% 0}}
-    .hero p{color:var(--muted);font-size:18px;margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto}
+    .hero .credentials{color:var(--accent);font-size:16px;margin-top:12px;font-weight:600;letter-spacing:.3px}
+    .hero .hero-sub{color:var(--muted);font-size:18px;margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto}
 
     .section{max-width:1000px;margin:0 auto;padding:80px 20px;border-bottom:1px solid rgba(255,255,255,.05)}
     .section h3{font-size:28px;color:var(--accent);margin-bottom:20px;text-align:center}
-    .section p{color:var(--muted);font-size:17px;line-height:1.6;text-align:center}
+    .section-intro{color:var(--muted);font-size:17px;line-height:1.6;text-align:center;max-width:700px;margin:0 auto 40px}
 
-    .about,.payouts,.mentorship{text-align:center}
-    .payouts img{max-width:90%;border-radius:12px;margin-top:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+    /* About Section */
+    .about-content{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;max-width:800px;margin:0 auto}
+    .profile-photo{text-align:center}
+    .profile-photo img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 4px 20px rgba(122,162,255,.3)}
+    .about-text{text-align:left}
+    .about-text p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px}
 
-    .cta{text-align:center;padding:80px 20px}
-    .cta h3{font-size:28px;margin-bottom:20px;color:var(--accent)}
-    .cta a{display:inline-block;padding:14px 26px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;transition:transform .3s}
-    .cta a:hover{transform:scale(1.05)}
+    /* Verified Performance */
+    .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+    .proof-item{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s,box-shadow .3s}
+    .proof-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
+    .proof-item img{width:100%;display:block;height:auto}
+
+    /* What I Teach */
+    .methodology{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin:40px auto;max-width:900px}
+    .method-item{text-align:center;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.05);border-radius:12px;transition:transform .3s,border-color .3s}
+    .method-item:hover{transform:translateY(-4px);border-color:rgba(122,162,255,.3)}
+    .method-icon{font-size:40px;margin-bottom:12px}
+    .method-item h4{color:var(--text);font-size:18px;margin:12px 0 8px 0}
+    .method-item p{color:var(--muted);font-size:14px;margin:0}
+    .approach-footer{color:var(--accent);font-size:17px;font-weight:600;text-align:center;margin-top:40px}
+
+    /* Mentorship */
+    .mentorship-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:800px;margin:30px auto}
+    .benefit{color:var(--text);padding:16px 24px;background:linear-gradient(180deg,rgba(122,162,255,.08),rgba(122,162,255,.03));border:1px solid rgba(122,162,255,.15);border-radius:8px;font-size:16px}
+    .mentorship-footer{color:var(--muted);font-size:15px;font-style:italic;text-align:center;margin-top:30px}
+
+    /* CTA */
+    .cta{text-align:center;padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.5),var(--bg))}
+    .cta h3{font-size:32px;margin-bottom:12px;color:var(--accent)}
+    .cta-sub{color:var(--muted);font-size:17px;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
+    .cta a{display:inline-block;padding:16px 32px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;font-size:18px;transition:transform .3s,box-shadow .3s}
+    .cta a:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(122,162,255,.4)}
+    .cta-note{color:var(--muted);font-size:14px;margin-top:16px;font-style:italic}
 
     footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
 
@@ -49,6 +77,18 @@
       .logo{height:36px}
       .brand-text{font-size:16px}
       nav a{margin-left:12px;font-size:14px}
+      
+      .hero{padding:80px 20px 60px}
+      .hero .credentials{font-size:14px}
+      
+      .about-content{grid-template-columns:1fr;gap:24px;text-align:center}
+      .about-text{text-align:center}
+      
+      .proof-grid{grid-template-columns:1fr;gap:20px}
+      
+      .methodology{grid-template-columns:1fr;gap:20px}
+      
+      .mentorship-benefits{grid-template-columns:1fr;gap:12px}
     }
   </style>
 </head>
@@ -68,28 +108,96 @@
 
   <section class="hero">
     <h2>Real Trading. Real Results.</h2>
-    <p>Consistent futures performance built on logic, volatility awareness, and precision execution — not patterns or noise.</p>
+    <p class="credentials">Senior Data Science Student | Quantitative Futures Trader | Statistical Edge Builder</p>
+    <p class="hero-sub">Consistent futures performance built on logic, volatility awareness, and precision execution — not patterns or noise.</p>
   </section>
 
   <section id="about" class="section about">
     <h3>About Me</h3>
-    <p>I'm Anthony — a futures trader specializing in Nasdaq (NQ) and S&P (ES) indices. My approach blends market structure, orderflow, and volatility to form precise trade execution frameworks. Every model I trade and teach is built from real data and performance, not theory.</p>
+    <div class="about-content">
+      <div class="profile-photo">
+        <!-- Replace profile.jpg with your AI-generated professional headshot -->
+        <img src="profile.jpg" alt="Anthony - Quantitative Futures Trader" />
+      </div>
+      <div class="about-text">
+        <p>I'm Anthony — a Senior Data Science student and aspiring professional trader specializing in Nasdaq (NQ) and S&P (ES) futures.</p>
+        <p>My edge isn't patterns or gut feelings — it's statistics, volatility modeling, and quantitative analysis. Every strategy I trade is built from real data, backtested rigorously, and executed with precision.</p>
+        <p>I combine academic rigor with real-world execution. Trading is applied mathematics, and I love the challenge of turning market data into consistent performance.</p>
+      </div>
+    </div>
   </section>
 
   <section id="payouts" class="section payouts">
     <h3>Verified Performance</h3>
-    <p>Results from prop firm funded accounts. Consistency matters more than hype.</p>
-    <img src="payouts.png" alt="Performance chart" />
+    <p class="section-intro">These aren't backtest screenshots — they're real payouts from funded prop accounts. Every number is verifiable.</p>
+    <!-- Replace payout1.png, payout2.png, etc. with your actual payout screenshots, certificates, and emails -->
+    <div class="proof-grid">
+      <div class="proof-item">
+        <img src="payout1.png" alt="Payout #1" />
+      </div>
+      <div class="proof-item">
+        <img src="payout2.png" alt="Payout #2" />
+      </div>
+      <div class="proof-item">
+        <img src="certificate1.png" alt="Certificate" />
+      </div>
+      <div class="proof-item">
+        <img src="payout3.png" alt="Payout #3" />
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="section approach">
+    <h3>My Approach</h3>
+    <p class="section-intro">I don't teach entry patterns. I teach you how to think about markets through a quantitative lens.</p>
+    <div class="methodology">
+      <div class="method-item">
+        <div class="method-icon">📊</div>
+        <h4>Market Structure & Liquidity</h4>
+        <p>Where institutions operate</p>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">📈</div>
+        <h4>Statistical Range Modeling</h4>
+        <p>VWAP, expansion zones, sigma boundaries</p>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">⚡</div>
+        <h4>Volatility Analysis</h4>
+        <p>VIX/VXN signals, regime changes</p>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🎯</div>
+        <h4>Order Flow Reading</h4>
+        <p>Absorption, sweeps, failed breakouts</p>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🔬</div>
+        <h4>Data-Driven Decision Making</h4>
+        <p>Backtesting, win rates, edge validation</p>
+      </div>
+    </div>
+    <p class="approach-footer">This isn't discretionary trading — it's systematic thinking with discretionary execution.</p>
   </section>
 
   <section id="mentorship" class="section mentorship">
     <h3>Mentorship</h3>
-    <p>My mentorship isn't about entry patterns — it's about understanding why price moves, how liquidity shifts, and when volatility drives opportunity. If you're ready to evolve your trading mindset, join below.</p>
+    <p class="section-intro">My mentorship program isn't about copying my trades — it's about building your own edge.</p>
+    <div class="mentorship-benefits">
+      <div class="benefit">✓ 1-on-1 strategy sessions</div>
+      <div class="benefit">✓ Access to my indicator suite (VWAP Engine, Expansion Zones, etc.)</div>
+      <div class="benefit">✓ Private Discord community</div>
+      <div class="benefit">✓ Trade review & feedback</div>
+      <div class="benefit">✓ Statistical modeling frameworks</div>
+    </div>
+    <p class="mentorship-footer">Best for: Traders who want to think quantitatively, not emotionally.</p>
   </section>
 
   <div class="cta">
     <h3>Book a Free Mentorship Call</h3>
+    <p class="cta-sub">Let's discuss your trading goals and see if my quantitative approach fits your style.</p>
     <a href="https://calendly.com/contact-anthony/trading-mentorship" target="_blank">Schedule via Calendly</a>
+    <p class="cta-note">No sales pitch. Just an honest conversation about markets.</p>
   </div>
 
   <footer>
