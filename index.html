@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anthony.trade — Real Trading. Real Results.</title>
   <meta name="description" content="Futures trader specializing in Nasdaq and S&P strategies. Real trades. Real results." />
+  <link rel="icon" type="image/webp" href="logo.webp" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root { --bg:#0b0d12; --text:#e6e9ef; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#88f0ff; }
     *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05)}
-    header h1{margin:0;font-size:20px;letter-spacing:.5px}
+    
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeInDown .6s ease-out}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .3s ease}
+    .brand-link:hover{transform:translateY(-2px)}
+    .logo{height:42px;width:auto;filter:drop-shadow(0 0 8px rgba(122,162,255,.3));transition:filter .3s ease}
+    .brand-link:hover .logo{filter:drop-shadow(0 0 12px rgba(122,162,255,.5))}
+    .brand-text{margin:0;font-size:18px;letter-spacing:.5px;font-weight:600;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
+    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500}
     nav a:hover{color:var(--accent)}
 
@@ -25,7 +34,7 @@
     .section p{color:var(--muted);font-size:17px;line-height:1.6;text-align:center}
 
     .about,.payouts,.mentorship{text-align:center}
-    .payouts img{max-width:90%;border-radius:12px;margin-top:20px}
+    .payouts img{max-width:90%;border-radius:12px;margin-top:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4)}
 
     .cta{text-align:center;padding:80px 20px}
     .cta h3{font-size:28px;margin-bottom:20px;color:var(--accent)}
@@ -33,16 +42,27 @@
     .cta a:hover{transform:scale(1.05)}
 
     footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header{padding:16px 20px}
+      .logo{height:36px}
+      .brand-text{font-size:16px}
+      nav a{margin-left:12px;font-size:14px}
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Anthony.trade</h1>
+    <a href="/" class="brand-link">
+      <img src="logo.webp" alt="Anthony's Lab" class="logo" />
+      <h1 class="brand-text">Anthony.trade</h1>
+    </a>
     <nav>
       <a href="#about">About</a>
       <a href="#payouts">Payouts</a>
       <a href="#mentorship">Mentorship</a>
-      <a href="https://anthonyslab.shop">Indicators</a>
+      <a href="https://anthonyslab.shop" target="_blank">Indicators</a>
     </nav>
   </header>
 
@@ -64,12 +84,12 @@
 
   <section id="mentorship" class="section mentorship">
     <h3>Mentorship</h3>
-    <p>My mentorship isn’t about entry patterns — it’s about understanding why price moves, how liquidity shifts, and when volatility drives opportunity. If you’re ready to evolve your trading mindset, join below.</p>
+    <p>My mentorship isn't about entry patterns — it's about understanding why price moves, how liquidity shifts, and when volatility drives opportunity. If you're ready to evolve your trading mindset, join below.</p>
   </section>
 
   <div class="cta">
     <h3>Book a Free Mentorship Call</h3>
-    <a href="https://calendly.com/contact-anthony/trading-mentorship">Schedule via Calendly</a>
+    <a href="https://calendly.com/contact-anthony/trading-mentorship" target="_blank">Schedule via Calendly</a>
   </div>
 
   <footer>
