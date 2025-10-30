@@ -12,7 +12,7 @@
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-    
+
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeInDown .6s ease-out}
     @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
     .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .3s ease}
@@ -49,9 +49,9 @@
     .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
     .proof-item{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s,box-shadow .3s}
     .proof-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
-    .proof-item img{width:100%;display:block;height:auto}
+    .proof-item img{width:100%;display:block;height:auto;cursor:zoom-in}
 
-    /* What I Teach */
+    /* Approach + Mentorship */
     .methodology{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin:40px auto;max-width:900px}
     .method-item{text-align:center;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.05);border-radius:12px;transition:transform .3s,border-color .3s}
     .method-item:hover{transform:translateY(-4px);border-color:rgba(122,162,255,.3)}
@@ -59,8 +59,6 @@
     .method-item h4{color:var(--text);font-size:18px;margin:12px 0 8px 0}
     .method-item p{color:var(--muted);font-size:14px;margin:0}
     .approach-footer{color:var(--accent);font-size:17px;font-weight:600;text-align:center;margin-top:40px}
-
-    /* Mentorship */
     .mentorship-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:800px;margin:30px auto}
     .benefit{color:var(--text);padding:16px 24px;background:linear-gradient(180deg,rgba(122,162,255,.08),rgba(122,162,255,.03));border:1px solid rgba(122,162,255,.15);border-radius:8px;font-size:16px}
     .mentorship-footer{color:var(--muted);font-size:15px;font-style:italic;text-align:center;margin-top:30px}
@@ -75,27 +73,34 @@
 
     footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
 
-    /* Responsive */
-    @media (max-width: 768px) {
+    /* Lightbox Modal */
+    .lightbox{position:fixed;inset:0;background:rgba(5,7,10,.8);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px}
+    .lightbox.open{display:flex}
+    .lb-frame{position:relative;max-width:min(1100px,96vw);max-height:min(88vh,900px);width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .lb-img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:12px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 40px rgba(0,0,0,.6)}
+    .lb-caption{color:var(--muted);font-size:14px;text-align:center;max-width:90%;line-height:1.4}
+    .lb-close,.lb-prev,.lb-next{position:absolute;border:none;background:rgba(255,255,255,.08);color:#fff;font-size:20px;line-height:1;border-radius:10px;padding:10px 12px;cursor:pointer;backdrop-filter:blur(3px);transition:transform .15s ease,background .15s ease}
+    .lb-close{top:-8px;right:-8px;transform:translate(50%,-50%)}
+    .lb-prev{left:-14px;top:50%;transform:translate(-100%,-50%)}
+    .lb-next{right:-14px;top:50%;transform:translate(100%,-50%)}
+    .lb-close:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.18)}
+    @media (max-width: 768px){
       header{padding:16px 20px}
       .logo{height:36px}
       .brand-text{font-size:16px}
       nav a{margin-left:12px;font-size:14px}
-      
       .hero{padding:80px 20px 60px}
       .hero .credentials{font-size:14px}
-      
       .about-content{grid-template-columns:1fr;gap:24px;text-align:center}
       .about-text{text-align:center}
-      
       .payout-stats{grid-template-columns:1fr;gap:16px}
       .stat-number{font-size:32px}
-      
       .proof-grid{grid-template-columns:1fr;gap:20px}
-      
       .methodology{grid-template-columns:1fr;gap:20px}
-      
       .mentorship-benefits{grid-template-columns:1fr;gap:12px}
+      .lb-prev{left:6px;transform:translate(0,-50%)}
+      .lb-next{right:6px;transform:translate(0,-50%)}
+      .lb-close{top:6px;right:6px;transform:none}
     }
   </style>
 </head>
@@ -109,7 +114,7 @@
       <a href="#about">About</a>
       <a href="#payouts">Payouts</a>
       <a href="#mentorship">Mentorship</a>
-      <a href="https://anthonyslab.shop" target="_blank">Indicators</a>
+      <a href="https://anthonyslab.shop" target="_blank" rel="noopener">Indicators</a>
     </nav>
   </header>
 
@@ -123,7 +128,6 @@
     <h3>About Me</h3>
     <div class="about-content">
       <div class="profile-photo">
-        <!-- Replace profile.jpg with your AI-generated professional headshot -->
         <img src="profile.jfif" alt="Anthony - Quantitative Futures Trader" />
       </div>
       <div class="about-text">
@@ -137,33 +141,20 @@
   <section id="payouts" class="section payouts">
     <h3>Verified Performance</h3>
     <p class="section-intro">Real payouts from funded prop accounts — multiple five figures earned. Consistency over time, not cherry-picked wins.</p>
-    <div class="proof-grid">
+    <div class="proof-grid" aria-live="polite">
       <div class="proof-item">
-        <img src="mff2.png" alt="My Funded Futures - $7,200 Payout" />
+        <img src="mff2.png" alt="My Funded Futures — $7,200 payout" />
       </div>
       <div class="proof-item">
-        <img src="mff1.png" alt="My Funded Futures - $6,000 Payout" />
+        <img src="mff1.png" alt="My Funded Futures — $6,000 payout" />
       </div>
       <div class="proof-item">
-        <img src="topstep.png" alt="TopStep - $5,000 Payout" />
+        <img src="topstep.png" alt="TopStep — $5,000 payout" />
       </div>
       <div class="proof-item">
-        <img src="topstep2.png" alt="TopStep - $4,000 Payout" />
+        <img src="topstep2.png" alt="TopStep — $4,000 payout" />
       </div>
-    </div>
-  </section>
-      <div class="proof-item">
-        <img src="mff2.PNG" alt="My Funded Futures - $7,200 Payout" />
-      </div>
-      <div class="proof-item">
-        <img src="mff1.PNG" alt="My Funded Futures - $6,000 Payout" />
-      </div>
-      <div class="proof-item">
-        <img src="topstep.PNG" alt="TopStep - $5,000 Payout" />
-      </div>
-      <div class="proof-item">
-        <img src="topstep2.PNG" alt="TopStep - $4,000 Payout" />
-      </div>
+      <!-- If you prefer the .PNG (uppercase) variants, swap the src paths above -->
     </div>
   </section>
 
@@ -203,7 +194,7 @@
   <div class="cta">
     <h3>Book a Free Mentorship Call</h3>
     <p class="cta-sub">Let's discuss your trading goals and see if my quantitative approach fits your style.</p>
-    <a href="https://calendly.com/contact-anthony/trading-mentorship" target="_blank">Schedule via Calendly</a>
+    <a href="https://calendly.com/contact-anthony/trading-mentorship" target="_blank" rel="noopener">Schedule via Calendly</a>
     <p class="cta-note">No sales pitch. Just an honest conversation about markets.</p>
   </div>
 
@@ -211,8 +202,98 @@
     © <span id="year"></span> Anthony.trade — All rights reserved.
   </footer>
 
+  <!-- Lightbox Modal (hidden by default) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Payout image viewer">
+    <div class="lb-frame">
+      <button class="lb-close" type="button" aria-label="Close viewer">✕</button>
+      <button class="lb-prev" type="button" aria-label="Previous image">❮</button>
+      <img class="lb-img" alt="" />
+      <div class="lb-caption" id="lb-caption"></div>
+      <button class="lb-next" type="button" aria-label="Next image">❯</button>
+    </div>
+  </div>
+
   <script>
+    // Year footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight lightbox for payout images
+    (function(){
+      const container = document.querySelector('#payouts .proof-grid');
+      if(!container) return;
+
+      const images = Array.from(container.querySelectorAll('img'));
+      const body = document.body;
+
+      const lightbox = document.getElementById('lightbox');
+      const imgEl = lightbox.querySelector('.lb-img');
+      const captionEl = lightbox.querySelector('.lb-caption');
+      const btnClose = lightbox.querySelector('.lb-close');
+      const btnPrev = lightbox.querySelector('.lb-prev');
+      const btnNext = lightbox.querySelector('.lb-next');
+
+      let index = 0;
+      let lastFocus = null;
+
+      const open = (i) => {
+        index = i;
+        const {src, alt} = images[index];
+        imgEl.src = src;
+        imgEl.alt = alt || '';
+        captionEl.textContent = alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        lastFocus = document.activeElement;
+        body.style.overflow = 'hidden';
+        btnClose.focus();
+      };
+
+      const close = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+        body.style.overflow = '';
+        imgEl.src = '';
+        if (lastFocus) lastFocus.focus();
+      };
+
+      const showPrev = () => open((index - 1 + images.length) % images.length);
+      const showNext = () => open((index + 1) % images.length);
+
+      images.forEach((img, i) => {
+        img.addEventListener('click', () => open(i));
+        img.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+        });
+        img.setAttribute('tabindex','0'); // keyboard focusable thumbnails
+      });
+
+      btnClose.addEventListener('click', close);
+      btnPrev.addEventListener('click', showPrev);
+      btnNext.addEventListener('click', showNext);
+
+      // Click outside the frame closes
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+      });
+
+      // Keyboard controls
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') showPrev();
+        else if (e.key === 'ArrowRight') showNext();
+      });
+
+      // Basic touch swipe
+      let touchX = null;
+      imgEl.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, {passive:true});
+      imgEl.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) dx > 0 ? showPrev() : showNext();
+        touchX = null;
+      }, {passive:true});
+    })();
   </script>
 </body>
 </html>
