@@ -1,299 +1,1074 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anthony.trade — Real Trading. Real Results.</title>
-  <meta name="description" content="Futures trader specializing in Nasdaq and S&P strategies. Real trades. Real results." />
-  <link rel="icon" type="image/webp" href="logo.webp" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root { --bg:#0b0d12; --text:#e6e9ef; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#88f0ff; }
-    *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — Animated Explainers for Creators</title>
+<meta name="description" content="A small studio producing custom animated explainers for creators, educators, and founders. Standardized packages from $400. Five-to-seven day delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0b;
+  --bg-alt: #111114;
+  --bg-card: #0f0f12;
+  --ink: #e8e6e1;
+  --ink-dim: #8a8a85;
+  --ink-faint: #3a3a37;
+  --accent: #7aa2ff;
+  --vwap: #ffaa00;
+  --poc: #801922;
+}
 
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeInDown .6s ease-out}
-    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-    .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .3s ease}
-    .brand-link:hover{transform:translateY(-2px)}
-    .logo{height:42px;width:auto;filter:drop-shadow(0 0 8px rgba(122,162,255,.3));transition:filter .3s ease}
-    .brand-link:hover .logo{filter:drop-shadow(0 0 12px rgba(122,162,255,.5))}
-    .brand-text{margin:0;font-size:18px;letter-spacing:.5px;font-weight:600;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
-    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500}
-    nav a:hover{color:var(--accent)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    .hero{text-align:center;padding:120px 20px 100px;max-width:900px;margin:auto;position:relative}
-    .hero h2{font-size:clamp(36px,6vw,72px);margin:0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:grad 8s linear infinite;background-size:200% 100%;}
-    @keyframes grad{0%{background-position:0 0}100%{background-position:200% 0}}
-    .hero .credentials{color:var(--accent);font-size:16px;margin-top:12px;font-weight:600;letter-spacing:.3px}
-    .hero .hero-sub{color:var(--muted);font-size:18px;margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-    .section{max-width:1000px;margin:0 auto;padding:80px 20px;border-bottom:1px solid rgba(255,255,255,.05)}
-    .section h3{font-size:28px;color:var(--accent);margin-bottom:20px;text-align:center}
-    .section-intro{color:var(--muted);font-size:17px;line-height:1.6;text-align:center;max-width:700px;margin:0 auto 40px}
+.serif { font-family: 'DM Serif Display', serif; font-weight: 400; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+a { color: inherit; text-decoration: none; }
 
-    /* About Section */
-    .about-content{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;max-width:800px;margin:0 auto}
-    .profile-photo{text-align:center}
-    .profile-photo img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 4px 20px rgba(122,162,255,.3)}
-    .about-text{text-align:left}
-    .about-text p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px}
+/* —— Top status bar ——————————————————————————————————— */
+.topbar {
+  border-bottom: 1px solid var(--ink-faint);
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.topbar-left { display: flex; gap: 24px; align-items: center; }
+.topbar-mark { color: var(--ink); }
+.topbar-mark .accent { color: var(--accent); }
 
-    /* Verified Performance */
-    .payout-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:700px;margin:30px auto 40px}
-    .stat-box{text-align:center;padding:24px;background:linear-gradient(135deg,rgba(122,162,255,.15),rgba(136,240,255,.1));border:1px solid rgba(122,162,255,.3);border-radius:12px}
-    .stat-number{font-size:36px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-    .stat-label{color:var(--muted);font-size:14px;font-weight:500}
-    .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
-    .proof-item{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s,box-shadow .3s}
-    .proof-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
-    .proof-item img{width:100%;display:block;height:auto;cursor:zoom-in}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  animation: pulse 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    /* Approach + Mentorship */
-    .methodology{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin:40px auto;max-width:900px}
-    .method-item{text-align:center;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.05);border-radius:12px;transition:transform .3s,border-color .3s}
-    .method-item:hover{transform:translateY(-4px);border-color:rgba(122,162,255,.3)}
-    .method-icon{font-size:40px;margin-bottom:12px}
-    .method-item h4{color:var(--text);font-size:18px;margin:12px 0 8px 0}
-    .method-item p{color:var(--muted);font-size:14px;margin:0}
-    .approach-footer{color:var(--accent);font-size:17px;font-weight:600;text-align:center;margin-top:40px}
-    .mentorship-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:800px;margin:30px auto}
-    .benefit{color:var(--text);padding:16px 24px;background:linear-gradient(180deg,rgba(122,162,255,.08),rgba(122,162,255,.03));border:1px solid rgba(122,162,255,.15);border-radius:8px;font-size:16px}
-    .mentorship-footer{color:var(--muted);font-size:15px;font-style:italic;text-align:center;margin-top:30px}
+/* —— Container —————————————————————————————————————————— */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
-    /* CTA */
-    .cta{text-align:center;padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.5),var(--bg))}
-    .cta h3{font-size:32px;margin-bottom:12px;color:var(--accent)}
-    .cta-sub{color:var(--muted);font-size:17px;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
-    .cta a{display:inline-block;padding:16px 32px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:#fff;text-decoration:none;font-weight:600;font-size:18px;transition:transform .3s,box-shadow .3s}
-    .cta a:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(122,162,255,.4)}
-    .cta-note{color:var(--muted);font-size:14px;margin-top:16px;font-style:italic}
+/* —— Hero ——————————————————————————————————————————————— */
+.hero { padding: 140px 0 120px; position: relative; }
 
-    footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-eyebrow::after {
+  content: '';
+  flex: 0 0 80px;
+  height: 1px;
+  background: var(--accent);
+}
 
-    /* Lightbox Modal */
-    .lightbox{position:fixed;inset:0;background:rgba(5,7,10,.8);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px}
-    .lightbox.open{display:flex}
-    .lb-frame{position:relative;max-width:min(1100px,96vw);max-height:min(88vh,900px);width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
-    .lb-img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:12px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 40px rgba(0,0,0,.6)}
-    .lb-caption{color:var(--muted);font-size:14px;text-align:center;max-width:90%;line-height:1.4}
-    .lb-close,.lb-prev,.lb-next{position:absolute;border:none;background:rgba(255,255,255,.08);color:#fff;font-size:20px;line-height:1;border-radius:10px;padding:10px 12px;cursor:pointer;backdrop-filter:blur(3px);transition:transform .15s ease,background .15s ease}
-    .lb-close{top:-8px;right:-8px;transform:translate(50%,-50%)}
-    .lb-prev{left:-14px;top:50%;transform:translate(-100%,-50%)}
-    .lb-next{right:-14px;top:50%;transform:translate(100%,-50%)}
-    .lb-close:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.18)}
-    @media (max-width: 768px){
-      header{padding:16px 20px}
-      .logo{height:36px}
-      .brand-text{font-size:16px}
-      nav a{margin-left:12px;font-size:14px}
-      .hero{padding:80px 20px 60px}
-      .hero .credentials{font-size:14px}
-      .about-content{grid-template-columns:1fr;gap:24px;text-align:center}
-      .about-text{text-align:center}
-      .payout-stats{grid-template-columns:1fr;gap:16px}
-      .stat-number{font-size:32px}
-      .proof-grid{grid-template-columns:1fr;gap:20px}
-      .methodology{grid-template-columns:1fr;gap:20px}
-      .mentorship-benefits{grid-template-columns:1fr;gap:12px}
-      .lb-prev{left:6px;transform:translate(0,-50%)}
-      .lb-next{right:6px;transform:translate(0,-50%)}
-      .lb-close{top:6px;right:6px;transform:none}
-    }
-  </style>
+.hero-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(44px, 7.5vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  max-width: 16ch;
+}
+.hero-headline em { font-style: italic; color: var(--accent); }
+
+.hero-sub {
+  font-size: 19px;
+  color: var(--ink-dim);
+  max-width: 60ch;
+  line-height: 1.55;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+
+.hero-cta-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover { background: var(--accent); transform: translateX(2px); }
+.btn-primary .arrow { transition: transform 0.2s ease; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--ink-dim);
+  border-bottom: 1px solid var(--ink-faint);
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+/* —— Stats strip —————————————————————————————————————— */
+.stats-strip {
+  border-top: 1px solid var(--ink-faint);
+  border-bottom: 1px solid var(--ink-faint);
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.stat { padding: 0 32px; border-right: 1px solid var(--ink-faint); }
+.stat:last-child { border-right: none; }
+
+.stat-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.stat-value .accent { color: var(--accent); }
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* —— Section base ———————————————————————————————————— */
+.section { padding: 140px 0; }
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 18ch;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--ink-dim);
+  max-width: 56ch;
+  line-height: 1.55;
+  margin-bottom: 80px;
+  font-weight: 300;
+}
+
+/* —— Showreel ——————————————————————————————————————— */
+.showreel {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+.reel-card {
+  position: relative;
+  background: var(--bg-alt);
+  border: 1px solid var(--ink-faint);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.reel-card:first-child { aspect-ratio: 9 / 14; align-self: stretch; }
+.reel-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+.reel-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(122,162,255,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(255,170,0,0.03), transparent 60%),
+    var(--bg-alt);
+}
+
+.reel-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+.reel-meta-top { display: flex; justify-content: space-between; }
+
+.reel-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-top: 16px;
+}
+
+.reel-play {
+  width: 48px; height: 48px;
+  border: 1px solid var(--ink-faint);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+.reel-card:hover .reel-play { border-color: var(--accent); background: rgba(122,162,255,0.08); }
+
+.reel-play::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 8px solid var(--ink);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin-left: 3px;
+}
+
+.showreel-note {
+  margin-top: 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  max-width: 70ch;
+  line-height: 1.5;
+}
+
+/* —— Packages ————————————————————————————————————————— */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.pkg {
+  border: 1px solid var(--ink-faint);
+  background: var(--bg-card);
+  padding: 40px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pkg:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+.pkg-featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(122,162,255,0.04) 0%, var(--bg-card) 30%);
+}
+
+.pkg-tag {
+  position: absolute;
+  top: -1px;
+  right: 24px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  font-weight: 500;
+}
+
+.pkg-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.pkg-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.pkg-tagline {
+  font-size: 14px;
+  color: var(--ink-dim);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.pkg-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.pkg-price .currency {
+  font-size: 26px;
+  color: var(--ink-dim);
+  vertical-align: top;
+  margin-right: 4px;
+  letter-spacing: 0;
+}
+
+.pkg-price-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+
+.pkg-divider {
+  height: 1px;
+  background: var(--ink-faint);
+  margin-bottom: 24px;
+}
+
+.pkg-list {
+  list-style: none;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.pkg-list li {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-weight: 300;
+}
+
+.pkg-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.pkg-best-for {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--ink-faint);
+}
+
+.pkg-best-for span { color: var(--ink); }
+
+.pkg-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.pkg-cta:hover { background: var(--accent); }
+.pkg-cta .arrow { transition: transform 0.2s ease; }
+.pkg-cta:hover .arrow { transform: translateX(3px); }
+
+.pkg-featured .pkg-cta { background: var(--accent); color: var(--bg); }
+.pkg-featured .pkg-cta:hover { background: var(--ink); }
+
+.pkg-footer-note {
+  margin-top: 56px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.05em;
+}
+.pkg-footer-note a { color: var(--accent); border-bottom: 1px solid var(--ink-faint); }
+.pkg-footer-note a:hover { border-color: var(--accent); }
+
+/* —— Capabilities ——————————————————————————————————— */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink-faint);
+}
+
+.service {
+  padding: 56px 40px 56px 0;
+  border-right: 1px solid var(--ink-faint);
+  border-bottom: 1px solid var(--ink-faint);
+  position: relative;
+}
+.service:nth-child(3n) { border-right: none; padding-right: 0; }
+.service:nth-child(n+1) { padding-left: 40px; }
+.service:nth-child(3n+1) { padding-left: 0; }
+
+.service-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.service-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.service-body {
+  color: var(--ink-dim);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 38ch;
+}
+
+.cap-disclaimer {
+  margin-top: 56px;
+  padding: 32px;
+  border: 1px solid var(--ink-faint);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.cap-disclaimer-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 4px;
+}
+
+.cap-disclaimer-body { font-size: 15px; line-height: 1.6; color: var(--ink-dim); }
+.cap-disclaimer-body strong { color: var(--ink); font-weight: 500; }
+
+/* —— Process ————————————————————————————————————————— */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.step {
+  border-top: 1px solid var(--accent);
+  padding-top: 24px;
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.step-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.step-body { color: var(--ink-dim); font-size: 14px; line-height: 1.55; }
+
+/* —— Built for ——————————————————————————————————————— */
+.audience-section {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.audience-list { list-style: none; border-top: 1px solid var(--ink-faint); }
+
+.audience-list li {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ink-faint);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.audience-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.1em;
+}
+
+.audience-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.audience-text small {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink-dim);
+  display: block;
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+/* —— About ——————————————————————————————————————————— */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  padding-top: 8px;
+  border-top: 1px solid var(--accent);
+  width: fit-content;
+  padding-right: 80px;
+}
+
+.about-body { font-size: 19px; line-height: 1.55; font-weight: 300; }
+.about-body p { margin-bottom: 24px; }
+.about-body em { color: var(--accent); font-style: normal; font-weight: 400; }
+
+/* —— Final CTA ————————————————————————————————————————— */
+.cta-section {
+  padding: 160px 0;
+  border-top: 1px solid var(--ink-faint);
+  text-align: center;
+}
+.cta-section .section-eyebrow { justify-content: center; }
+.cta-section .section-eyebrow::before { display: none; }
+
+.cta-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-sub {
+  color: var(--ink-dim);
+  font-size: 17px;
+  max-width: 52ch;
+  margin: 0 auto 56px;
+  line-height: 1.55;
+}
+
+.cta-section .btn-primary { padding: 22px 40px; font-size: 16px; }
+
+.cta-fineprint {
+  margin-top: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+.cta-fineprint a:hover { color: var(--accent); }
+
+/* —— Footer ——————————————————————————————————————————— */
+.footer {
+  border-top: 1px solid var(--ink-faint);
+  padding: 40px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.footer-links { display: flex; gap: 32px; }
+.footer a:hover { color: var(--accent); }
+
+/* —— Responsive ————————————————————————————————————————— */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .topbar { padding: 12px 24px; font-size: 10px; }
+  .topbar-left { gap: 14px; }
+  .topbar-right { display: none; }
+  .hero { padding: 80px 0 60px; }
+  .stats-strip { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--ink-faint); padding: 24px 0; }
+  .stat:last-child { border-bottom: none; }
+  .showreel { grid-template-columns: 1fr; }
+  .reel-card:first-child { aspect-ratio: 9 / 16; }
+  .packages { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr; }
+  .service { padding: 40px 0 !important; border-right: none; }
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .audience-section, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cap-disclaimer { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  .section { padding: 80px 0; }
+  .footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+}
+
+/* —— Page-load reveal ————————————————————————————————— */
+.reveal { opacity: 0; transform: translateY(16px); animation: reveal 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+.reveal-1 { animation-delay: 0.1s; }
+.reveal-2 { animation-delay: 0.25s; }
+.reveal-3 { animation-delay: 0.4s; }
+.reveal-4 { animation-delay: 0.55s; }
+
+@keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+</style>
 </head>
 <body>
-  <header>
-    <a href="/" class="brand-link">
-      <img src="logo.webp" alt="Anthony's Lab" class="logo" />
-      <h1 class="brand-text">Anthony's Lab</h1>
+
+<!-- Top status bar -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-mark">STUDIO<span class="accent">.</span>ANTHONY<span class="accent">.</span>TRADE</span>
+    <span style="color: var(--ink-faint);">/</span>
+    <span>EST. 2026</span>
+  </div>
+  <div class="topbar-right">
+    <span class="status-dot"></span>NOW BOOKING · Q2 2026
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow reveal reveal-1">An animation studio for creators</div>
+
+    <h1 class="hero-headline reveal reveal-2">
+      Animated explainers<br>
+      for <em>creators</em> who<br>
+      care how it looks.
+    </h1>
+
+    <p class="hero-sub reveal reveal-3">
+      A small studio producing custom animated content for educators, founders, and creators across any topic.
+      Standardized packages from $400. Five-to-seven day delivery. Built by a creator who proved the pipeline on his own channel — 198K views, 16K likes, and 1K new followers in a single week — and now produces it on commission.
+    </p>
+
+    <div class="hero-cta-row reveal reveal-4">
+      <a href="#packages" class="btn-primary">
+        View packages
+        <span class="arrow">→</span>
+      </a>
+      <a href="#showreel" class="btn-secondary">View showreel ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats strip -->
+<div class="container">
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="stat-value">198K<span class="accent">+</span></div>
+      <div class="stat-label">Views driven in a single week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">1K<span class="accent">+</span></div>
+      <div class="stat-label">Shares per week · algorithm signal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">5—7</div>
+      <div class="stat-label">Day standard turnaround</div>
+    </div>
+  </div>
+</div>
+
+<!-- Showreel -->
+<section class="section" id="showreel">
+  <div class="container">
+    <div class="section-eyebrow">01 / Selected work</div>
+    <h2 class="section-title">Recent explainers,<br>made in-house.</h2>
+
+    <div class="showreel">
+      <a href="#" class="reel-card">
+        <div class="reel-placeholder">
+          <div class="reel-meta-top">
+            <span>VOL 07</span>
+            <span>VOLUME PROFILE</span>
+          </div>
+          <div>
+            <div class="reel-play"></div>
+            <div class="reel-title">Volume profile,<br>animated.</div>
+            <div class="reel-meta" style="margin-top: 16px;">TIKTOK · 2025</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="reel-card">
+        <div class="reel-placeholder">
+          <div class="reel-meta-top">
+            <span>VOL 08</span>
+            <span>ABSORPTION</span>
+          </div>
+          <div>
+            <div class="reel-play"></div>
+            <div class="reel-title">Absorption<br>at level.</div>
+            <div class="reel-meta" style="margin-top: 16px;">TIKTOK · 2026</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="reel-card">
+        <div class="reel-placeholder">
+          <div class="reel-meta-top">
+            <span>VOL 06</span>
+            <span>VWAP</span>
+          </div>
+          <div>
+            <div class="reel-play"></div>
+            <div class="reel-title">VWAP &amp; the<br>standard band.</div>
+            <div class="reel-meta" style="margin-top: 16px;">TIKTOK · 2025</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="showreel-note">
+      // Most recent batch is from the finance / trading vertical — the founder's home base.<br>
+      // The pipeline is concept-agnostic. Sample work in other verticals available on request.
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section class="section" id="packages">
+  <div class="container">
+    <div class="section-eyebrow">02 / Packages</div>
+    <h2 class="section-title">Pick a package.<br>Ship in a week.</h2>
+    <p class="section-sub">Standardized scope. Fixed pricing. No proposals, no negotiations, no four-week timelines for a 30-second video. Pay, brief, deliver.</p>
+
+    <div class="packages">
+
+      <!-- Single Drop -->
+      <div class="pkg">
+        <div class="pkg-num">→ 01</div>
+        <h3 class="pkg-name">Single Drop</h3>
+        <p class="pkg-tagline">One animated explainer.</p>
+        <div class="pkg-price"><span class="currency">$</span>400</div>
+        <div class="pkg-price-sub">One-time · Per video</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>One 30–45s vertical animation</li>
+          <li>House style (locked palette)</li>
+          <li>1 round of revisions</li>
+          <li>5-day delivery</li>
+          <li>1080×1920 MP4 + 1080×1080 square</li>
+        </ul>
+        <div class="pkg-best-for">BEST FOR: <span>creators testing the format</span></div>
+        <!-- TODO: Replace with Stripe Payment Link for $400 -->
+        <a href="https://buy.stripe.com/REPLACE_WITH_SINGLE_DROP_LINK" class="pkg-cta">
+          Buy Single Drop <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Creator Pack — Featured -->
+      <div class="pkg pkg-featured">
+        <div class="pkg-tag">MOST POPULAR</div>
+        <div class="pkg-num">→ 02</div>
+        <h3 class="pkg-name">Creator Pack</h3>
+        <p class="pkg-tagline">Four videos, one month.</p>
+        <div class="pkg-price"><span class="currency">$</span>1,200</div>
+        <div class="pkg-price-sub">$300 effective per video · Save $400</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Four 30–45s vertical animations</li>
+          <li>Submit topics on your schedule</li>
+          <li>1 revision per video</li>
+          <li>Weekly delivery cadence</li>
+          <li>House style + your accent color</li>
+          <li>All formats (MP4 vertical + square)</li>
+        </ul>
+        <div class="pkg-best-for">BEST FOR: <span>creators committed to a series</span></div>
+        <!-- TODO: Replace with Stripe Payment Link for $1,200 -->
+        <a href="https://buy.stripe.com/REPLACE_WITH_CREATOR_PACK_LINK" class="pkg-cta">
+          Buy Creator Pack <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Studio Series -->
+      <div class="pkg">
+        <div class="pkg-num">→ 03</div>
+        <h3 class="pkg-name">Studio Series</h3>
+        <p class="pkg-tagline">Ten videos, six weeks.</p>
+        <div class="pkg-price"><span class="currency">$</span>3,000</div>
+        <div class="pkg-price-sub">$300 effective per video · Priority queue</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Ten 30–45s vertical animations</li>
+          <li>Light brand customization (logo end-card, accent)</li>
+          <li>1 revision per video</li>
+          <li>6-week delivery window</li>
+          <li>Priority production queue</li>
+          <li>Monthly content planning chat</li>
+          <li>Raw frames on request</li>
+        </ul>
+        <div class="pkg-best-for">BEST FOR: <span>serious body of work</span></div>
+        <!-- TODO: Replace with Stripe Payment Link for $3,000 -->
+        <a href="https://buy.stripe.com/REPLACE_WITH_STUDIO_SERIES_LINK" class="pkg-cta">
+          Buy Studio Series <span class="arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="pkg-footer-note">
+      // Need custom scope, full brand identity work, or larger volume?<br>
+      Email <a href="mailto:anthony@anthony.trade">anthony@anthony.trade</a> for a custom quote.
+    </p>
+  </div>
+</section>
+
+<!-- Capabilities -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">03 / What we make</div>
+    <h2 class="section-title">Concept-driven<br>animation.</h2>
+
+    <div class="services">
+      <div class="service">
+        <div class="service-num">→ 01</div>
+        <h3 class="service-title">Educational explainers</h3>
+        <p class="service-body">
+          Concept videos for TikTok, Reels, YouTube Shorts, course modules, or paid newsletter drops.
+          Frameworks, processes, comparisons, mechanisms — anything that teaches better with motion than with a screenshot.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-num">→ 02</div>
+        <h3 class="service-title">Promotional content</h3>
+        <p class="service-body">
+          Feature explainers, launch videos, and product walkthroughs for SaaS, tooling companies,
+          course creators, and indie brands. Animated demos that hold attention longer than screen recordings.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-num">→ 03</div>
+        <h3 class="service-title">Branded series</h3>
+        <p class="service-body">
+          Recurring content for paid communities, course members, and newsletter subscribers.
+          Consistent visual identity over time. Built to ship every week without slipping.
+        </p>
+      </div>
+    </div>
+
+    <div class="cap-disclaimer">
+      <div class="cap-disclaimer-label">// THE FINE PRINT</div>
+      <div class="cap-disclaimer-body">
+        <strong>The pipeline does concept animation, not character work or photoreal 3D.</strong>
+        We make the kind of clean, motion-driven explainers you've seen in the showreel — across any subject. If we can't make your idea look great in our pipeline, we'll tell you on the discovery call instead of taking the job.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">04 / How it works</div>
+    <h2 class="section-title">Pay, brief, deliver.</h2>
+
+    <div class="process-grid">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h3 class="step-title">Pick &amp; pay</h3>
+        <p class="step-body">Choose a package above, pay through Stripe. You get an instant intake form sent to your email.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h3 class="step-title">Brief</h3>
+        <p class="step-body">Submit your topic, key points, and any brand assets. Concept locked within 24 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h3 class="step-title">Render</h3>
+        <p class="step-body">First draft delivered in 5 days. One round of revisions per video on every package.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <h3 class="step-title">Ship</h3>
+        <p class="step-body">Final files via Dropbox. MP4 + square crop + raw frames on request. Yours to use everywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Built for -->
+<section class="section">
+  <div class="container">
+    <div class="audience-section">
+      <div>
+        <div class="section-eyebrow">05 / Built for</div>
+        <h2 class="section-title" style="margin-bottom: 0;">Creators who care<br>how it looks.</h2>
+      </div>
+
+      <ul class="audience-list">
+        <li>
+          <span class="audience-num">/ 01</span>
+          <span class="audience-text">
+            Educators and course creators
+            <small>Teaching anything from finance to neuroscience to filmmaking. If your concept needs a visual, we render it.</small>
+          </span>
+        </li>
+        <li>
+          <span class="audience-num">/ 02</span>
+          <span class="audience-text">
+            Founders and indie SaaS
+            <small>Landing-page hero animations, feature explainers, demo content. Animation that doesn't look AI-generated.</small>
+          </span>
+        </li>
+        <li>
+          <span class="audience-num">/ 03</span>
+          <span class="audience-text">
+            Newsletter writers and content brands
+            <small>Branded explainer drops for paid subscribers. Recurring content that elevates the publication.</small>
+          </span>
+        </li>
+        <li>
+          <span class="audience-num">/ 04</span>
+          <span class="audience-text">
+            Established creators wanting elevation
+            <small>You have the audience and the ideas. We make the visuals match the ambition.</small>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-label">06 / About</div>
+      <div class="about-body">
+        <p>
+          The studio is run by Anthony, founder of <em>Anthony's Lab</em>.
+          The animation pipeline was built for his own TikTok channel first — and after the format started moving real numbers (most recent week: 198K views, 16K likes, 1K shares, 1K new followers), other creators started asking how it was made. Now we make them on commission.
+        </p>
+        <p>
+          The studio stays small on purpose. Every project is hands-on. House style is locked but adapts to your brand colors and voice.
+          The pipeline is concept-agnostic — finance, fitness, tech, education, product — if it's an idea worth animating, we can render it.
+        </p>
+        <p style="color: var(--ink-dim); font-size: 17px;">
+          Built by a creator. Made for creators. No agency overhead, no junior team, no four-week timelines for a 30-second video.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-eyebrow"><span class="status-dot"></span>NOW BOOKING</div>
+    <h2 class="cta-headline serif">Have an idea<br>worth animating?</h2>
+    <p class="cta-sub">
+      Pick a package, pay, and start the brief in under five minutes. For custom scope, email direct.
+    </p>
+    <a href="#packages" class="btn-primary">
+      View packages
+      <span class="arrow">↑</span>
     </a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#payouts">Payouts</a>
-      <a href="#mentorship">Mentorship</a>
-      <a href="https://anthonyslab.shop" target="_blank" rel="noopener">Indicators</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h2>Real Trading. Real Results.</h2>
-    <p class="credentials">Senior Data Science Student | Quantitative Futures Trader | Statistical Edge Builder</p>
-    <p class="hero-sub">Consistent futures performance built on logic, volatility awareness, and precision execution — not patterns or noise.</p>
-  </section>
-
-  <section id="about" class="section about">
-    <h3>About Me</h3>
-    <div class="about-content">
-      <div class="profile-photo">
-        <img src="profile.jfif" alt="Anthony - Quantitative Futures Trader" />
-      </div>
-      <div class="about-text">
-        <p>I'm Anthony — a Senior Data Science student and aspiring professional trader specializing in Nasdaq (NQ) and S&P (ES) futures.</p>
-        <p>My edge isn't patterns or gut feelings — it's statistics, volatility modeling, and quantitative analysis. Every strategy I trade is built from real data, backtested rigorously, and executed with precision.</p>
-        <p>I combine academic rigor with real-world execution. Trading is applied mathematics, and I love the challenge of turning market data into consistent performance.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="payouts" class="section payouts">
-    <h3>Verified Performance</h3>
-    <p class="section-intro">Real payouts from funded prop accounts — multiple five figures earned. Consistency over time, not cherry-picked wins.</p>
-    <div class="proof-grid" aria-live="polite">
-      <div class="proof-item">
-        <img src="mff2.PNG" alt="My Funded Futures — $7,200 payout" />
-      </div>
-      <div class="proof-item">
-        <img src="mff1.PNG" alt="My Funded Futures — $6,000 payout" />
-      </div>
-      <div class="proof-item">
-        <img src="topstep.PNG" alt="TopStep — $5,000 payout" />
-      </div>
-      <div class="proof-item">
-        <img src="topstep2.PNG" alt="TopStep — $4,000 payout" />
-      </div>
-      <!-- If you prefer the .PNG (uppercase) variants, swap the src paths above -->
-    </div>
-  </section>
-
-  <section id="approach" class="section approach">
-    <h3>My Approach</h3>
-    <p class="section-intro">I don't trade patterns. I trade probabilities, market structure, and statistical edges rooted in Auction Market Theory.</p>
-    <div class="approach-grid">
-      <div class="approach-card">
-        <h4>Statistical Foundation</h4>
-        <p>VWAP anchors, POC levels, and value area analysis. Every trade is backed by quantifiable data and historical probability.</p>
-      </div>
-      <div class="approach-card">
-        <h4>Orderflow & Liquidity</h4>
-        <p>Understanding where institutions operate — absorption zones, liquidity sweeps, and fair vs. unfair value pricing.</p>
-      </div>
-      <div class="approach-card">
-        <h4>Discipline Over Emotion</h4>
-        <p>Risk management, position sizing, and systematic execution. Consistency comes from process, not predictions.</p>
-      </div>
-    </div>
-    <p class="approach-footer">Auction Market Theory + Data Science = Edge</p>
-  </section>
-
-  <section id="mentorship" class="section mentorship">
-    <h3>Mentorship</h3>
-    <p class="section-intro">My mentorship program isn't about copying my trades — it's about building your own edge.</p>
-    <div class="mentorship-benefits">
-      <div class="benefit">✓ 1-on-1 strategy sessions</div>
-      <div class="benefit">✓ Access to my indicator suite (VWAP Engine, Expansion Zones, etc.)</div>
-      <div class="benefit">✓ Private Discord community</div>
-      <div class="benefit">✓ Trade review & feedback</div>
-      <div class="benefit">✓ Statistical modeling frameworks</div>
-    </div>
-    <p class="mentorship-footer">Best for: Traders who want to think quantitatively, not emotionally.</p>
-  </section>
-
-  <div class="cta">
-    <h3>Book a Free Mentorship Call</h3>
-    <p class="cta-sub">Let's discuss your trading goals and see if my quantitative approach fits your style.</p>
-    <a href="https://calendly.com/contact-anthony/trading-mentorship" target="_blank" rel="noopener">Schedule via Calendly</a>
-    <p class="cta-note">No sales pitch. Just an honest conversation about markets.</p>
-  </div>
-
-  <footer>
-    © <span id="year"></span> Anthony.trade — All rights reserved.
-  </footer>
-
-  <!-- Lightbox Modal (hidden by default) -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Payout image viewer">
-    <div class="lb-frame">
-      <button class="lb-close" type="button" aria-label="Close viewer">✕</button>
-      <button class="lb-prev" type="button" aria-label="Previous image">❮</button>
-      <img class="lb-img" alt="" />
-      <div class="lb-caption" id="lb-caption"></div>
-      <button class="lb-next" type="button" aria-label="Next image">❯</button>
+    <div class="cta-fineprint">
+      Or email <a href="mailto:anthony@anthony.trade" style="border-bottom: 1px solid var(--ink-faint);">anthony@anthony.trade</a>
     </div>
   </div>
+</section>
 
-  <script>
-    // Year footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+<!-- Footer -->
+<footer class="footer">
+  <div>STUDIO.ANTHONY.TRADE · © 2026</div>
+  <div class="footer-links">
+    <a href="https://anthonyslab.shop">Anthony's Lab ↗</a>
+    <a href="https://tiktok.com/@nasdaqant">TikTok ↗</a>
+    <a href="https://twitter.com/nasdaqant">X ↗</a>
+    <a href="mailto:anthony@anthony.trade">Email</a>
+  </div>
+</footer>
 
-    // Lightweight lightbox for payout images
-    (function(){
-      const container = document.querySelector('#payouts .proof-grid');
-      if(!container) return;
-
-      const images = Array.from(container.querySelectorAll('img'));
-      const body = document.body;
-
-      const lightbox = document.getElementById('lightbox');
-      const imgEl = lightbox.querySelector('.lb-img');
-      const captionEl = lightbox.querySelector('.lb-caption');
-      const btnClose = lightbox.querySelector('.lb-close');
-      const btnPrev = lightbox.querySelector('.lb-prev');
-      const btnNext = lightbox.querySelector('.lb-next');
-
-      let index = 0;
-      let lastFocus = null;
-
-      const open = (i) => {
-        index = i;
-        const {src, alt} = images[index];
-        imgEl.src = src;
-        imgEl.alt = alt || '';
-        captionEl.textContent = alt || '';
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden','false');
-        lastFocus = document.activeElement;
-        body.style.overflow = 'hidden';
-        btnClose.focus();
-      };
-
-      const close = () => {
-        lightbox.classList.remove('open');
-        lightbox.setAttribute('aria-hidden','true');
-        body.style.overflow = '';
-        imgEl.src = '';
-        if (lastFocus) lastFocus.focus();
-      };
-
-      const showPrev = () => open((index - 1 + images.length) % images.length);
-      const showNext = () => open((index + 1) % images.length);
-
-      images.forEach((img, i) => {
-        img.addEventListener('click', () => open(i));
-        img.addEventListener('keydown', (e) => {
-          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
-        });
-        img.setAttribute('tabindex','0'); // keyboard focusable thumbnails
-      });
-
-      btnClose.addEventListener('click', close);
-      btnPrev.addEventListener('click', showPrev);
-      btnNext.addEventListener('click', showNext);
-
-      // Click outside the frame closes
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) close();
-      });
-
-      // Keyboard controls
-      document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') close();
-        else if (e.key === 'ArrowLeft') showPrev();
-        else if (e.key === 'ArrowRight') showNext();
-      });
-
-      // Basic touch swipe
-      let touchX = null;
-      imgEl.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, {passive:true});
-      imgEl.addEventListener('touchend', (e) => {
-        if (touchX === null) return;
-        const dx = e.changedTouches[0].clientX - touchX;
-        if (Math.abs(dx) > 40) dx > 0 ? showPrev() : showNext();
-        touchX = null;
-      }, {passive:true});
-    })();
-  </script>
 </body>
 </html>
